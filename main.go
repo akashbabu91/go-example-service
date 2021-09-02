@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"example-service/internal/reader"
+	"example-service/internal/dataaccess"
 	"example-service/internal/server"
 	"example-service/internal/routes"
 	"example-service/internal/logger"
@@ -22,10 +22,10 @@ func main() {
 		fmt.Println("Failed to start server ", err)
 	}
 
-	employeeReader, err := reader.NewDummyDataReader()
+	employeeReader, err := dataaccess.NewDummy()
 
 	if err != nil {
-		fmt.Println("Failed to get dummy data reader", err)
+		fmt.Println("Failed to get dummy", err)
 	}
 
 	// register routes
