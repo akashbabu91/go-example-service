@@ -22,7 +22,7 @@ func main() {
 		fmt.Println("Failed to start server ", err)
 	}
 
-	employeeReaderWriter, err := dataaccess.NewDummy()
+	employeeReaderWriter, err := dataaccess.NewS3("test", "us-east-1")
 
 	if err != nil {
 		fmt.Println("Failed to get dummy", err)
