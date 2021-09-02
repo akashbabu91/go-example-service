@@ -22,14 +22,14 @@ func main() {
 		fmt.Println("Failed to start server ", err)
 	}
 
-	employeeReader, err := dataaccess.NewDummy()
+	employeeReaderWriter, err := dataaccess.NewDummy()
 
 	if err != nil {
 		fmt.Println("Failed to get dummy", err)
 	}
 
 	// register routes
-	routes.RegisterRoutes(*server, employeeReader)
+	routes.RegisterRoutes(*server, employeeReaderWriter)
 
 	// register middleware
 	server.Router.Use(logger.LoggingMiddleware)
