@@ -5,9 +5,7 @@ type dummy struct {
 }
 
 func NewDummy() (ReaderWriter, error) {
-	return config{
-		ReaderWriter: dummy{},
-	}, nil
+	return dummy{}, nil
 }
 
 func NewDummyReader() (Reader, error) {

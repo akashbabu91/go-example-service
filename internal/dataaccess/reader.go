@@ -21,7 +21,3 @@ type ReaderWriter interface {
 	Reader
 	Writer
 }
-
-type config struct {
-	ReaderWriter
-}
