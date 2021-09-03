@@ -8,12 +8,19 @@ import (
 )
 
 type s3service struct {
-	// things needed to make S3DataReader functional
-	BucketName string
-	Region string
-	S3Client s3.Client
+	BucketName string // name of the S3 Bucket
+	Region string // aws region e.g us-east-1
+	S3Client s3.Client // S3 Client 
 }
 
+// Creates a s3Service capable of reading and writing
+// to AWS S3
+// Inputs:
+//     bucketName - name of the s3 bucket to be used for operations
+//     region - the aws region where the bucket is located
+// Output:
+//     If success, a ReaderWriter containing an s3.Client
+//     is returned, otherwise, nil and an error
 func NewS3(bucketName string, region string) (ReaderWriter, error) {
 	s3svc := createS3(region)
 
@@ -24,6 +31,13 @@ func NewS3(bucketName string, region string) (ReaderWriter, error) {
 		}, nil
 }
 
+// Creates a s3Service capable of reading from AWS S3
+// Inputs:
+//     bucketName - name of the s3 bucket to be used for operations
+//     region - the aws region where the bucket is located
+// Output:
+//     If success, a Reader containing an s3.Client
+//     is returned, otherwise, nil and an error
 func NewS3Reader(bucketName string, region string) (Reader, error) {
 	s3svc := createS3(region)
 
@@ -34,6 +48,13 @@ func NewS3Reader(bucketName string, region string) (Reader, error) {
 		}, nil
 }
 
+// Creates a s3Service capable of writing to AWS S3
+// Inputs:
+//     bucketName - name of the s3 bucket to be used for operations
+//     region - the aws region where the bucket is located
+// Output:
+//     If success, a Writer containing an s3.Client
+//     is returned, otherwise, nil and an error
 func NewS3Writer(bucketName string, region string) (Writer, error) {
 	s3svc := createS3(region)
 
